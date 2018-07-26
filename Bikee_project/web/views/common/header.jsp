@@ -114,7 +114,7 @@ function validate() {
 	            <ul class="nav navbar-nav navbar-right">
                 <% if(memberLoggedIn != null) { %>
                     <li class="dropdown">
-                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >마이페이지<span class="caret"></span></a>
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >마이페이지11<span class="caret"></span></a>
                     	<ul class="dropdown-menu">
                     		<li><a onclick="location.href='<%= request.getContextPath() %>/memberInfoUp?memId=<%= memberLoggedIn.getMem_id() %>'"><span class="glyphicon glyphicon-lock"> 회원정보수정</span></a></li>
                     		<li><a onclick="location.href='<%= request.getContextPath() %>/memberPassUp?memId=<%= memberLoggedIn.getMem_id() %>'"><span class="glyphicon glyphicon-lock"> 비밀번호수정</span></a></li>
