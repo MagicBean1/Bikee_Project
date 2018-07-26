@@ -41,10 +41,10 @@ public class MemberService {
 	
 	
 	
-	public int memberUpdateEnd(Member m) {
+	public int memberInfoUp(Member m) {
 		Connection conn=getConnection();
 		
-		int result=new MemberDAO().memberUpdateEnd(conn,m);
+		int result=new MemberDAO().memberInfoUp(conn,m);
 		
 		if(result>0) commit(conn);
 		else rollback(conn);
@@ -55,7 +55,21 @@ public class MemberService {
 		
 		
 	}
-
+	
+	public int memberPassUp(Member m) {
+		Connection conn=getConnection();
+		
+		int result=new MemberDAO().memberPassUp(conn,m);
+		
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		
+		return result;
+			
+		
+		
+	}
 
 
 }

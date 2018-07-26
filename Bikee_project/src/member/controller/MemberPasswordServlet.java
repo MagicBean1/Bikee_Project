@@ -1,7 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberUpdateServlet
+ * Servlet implementation class MemberPasswordServlet
  */
-@WebServlet("/memberUpdate")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/memberPassUp")
+public class MemberPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdateServlet() {
+    public MemberPasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,16 +32,9 @@ public class MemberUpdateServlet extends HttpServlet {
 		String userId = request.getParameter("memId");
 		System.out.println(userId);
 		Member m = new MemberService().selectOne(userId);
-		System.out.println(m);
+		
 		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/memberUpdate.jsp").forward(request, response);
-		
-		
-		
-
-		
-	
-		
+		request.getRequestDispatcher("/views/member/memberPassUp.jsp").forward(request, response);
 		
 		
 		

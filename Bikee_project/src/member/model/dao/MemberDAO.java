@@ -111,10 +111,10 @@ public class MemberDAO {
 		return isAble;
 	}
 
-	public int memberUpdateEnd(Connection conn,Member m) {
+	public int memberInfoUp(Connection conn,Member m) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String sql=prop.getProperty("updateMember");
+		String sql=prop.getProperty("updateInfo");
 		System.out.println(sql);
 		/*MEM_BIRTHDATE = ?, MEM_PHONE =?, MEM_EMAIL =?,MEM_ADDR = ? WHERE MEM_ID = ?
 				1 생일
@@ -142,7 +142,33 @@ public class MemberDAO {
 		return result;
 	}
 
-
+	public int memberPassUp(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("updatePass");
+		System.out.println(sql);
+		/*MEM_BIRTHDATE = ?, MEM_PHONE =?, MEM_EMAIL =?,MEM_ADDR = ? WHERE MEM_ID = ?
+				1 생일
+				2 폰
+				3 이멜
+				4 주소
+				5 WHERE 아이디*/
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMem_pw());
+			pstmt.setString(2, m.getMem_id());
+			result=pstmt.executeUpdate();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		close(pstmt);
+		
+		
+		return result;
+	}
 
 
 }

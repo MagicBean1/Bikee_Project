@@ -5,10 +5,6 @@
 
 <%
 Member m = (Member)request.getAttribute("member");
-	
-
-
-	
 %>
 <style>
 	.col-md-6{padding-right: 10px;padding-left: 0px;}

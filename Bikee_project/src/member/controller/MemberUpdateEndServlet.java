@@ -31,22 +31,42 @@ public class MemberUpdateEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String userId = (String)request.getParameter("userId");
-		String userName = (String)request.getParameter("userName");
-		int userBirthday =Integer.parseInt(request.getParameter("userBirthday"));
-		String userEmail = (String)request.getParameter("userEmail");
-		String userAddress = (String)request.getParameter("userAddress");
-		String userPhone = (String)request.getParameter("userPhone");
 		
-		Member m = new Member();
-		m.setMem_id(userId);
-		m.setMem_name(userName);
-		m.setMem_birthdate(userBirthday);
-		m.setMem_email(userEmail);
-		m.setMem_addr(userEmail);
-		m.setMem_phone(userPhone);
+		String from = (String)request.getParameter("from");
 		
-		int result = new MemberService().memberUpdateEnd(m);
+		Member m = null;
+		int result = 0;
+		if(from.equals("Update")) {
+			
+			String userId = (String)request.getParameter("userId");
+			String userName = (String)request.getParameter("userName");
+			int userBirthday =Integer.parseInt(request.getParameter("userBirthday"));
+			String userEmail = (String)request.getParameter("userEmail");
+			String userAddress = (String)request.getParameter("userAddress");
+			String userPhone = (String)request.getParameter("userPhone");
+			
+			m = new Member();
+			m.setMem_id(userId);
+			m.setMem_name(userName);
+			m.setMem_birthdate(userBirthday);
+			m.setMem_email(userEmail);
+			m.setMem_addr(userEmail);
+			m.setMem_phone(userPhone);
+			
+			result =new MemberService().memberInfoUp(m);
+		}else {
+			
+			String userPw=(String)request.getParameter("userPw");
+			String userId = (String)request.getParameter("userId");
+			m = new Member();
+			m.setMem_pw(userPw);
+			
+			result = new MemberService().memberPassUp(m);
+			
+			
+		}
+		
+		 
 		
 		String msg="";
 		String loc="/";
