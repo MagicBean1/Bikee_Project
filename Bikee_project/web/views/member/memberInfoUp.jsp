@@ -107,7 +107,7 @@ $(function () {
 					</div>
 					<!-- 이름 -->
 					<div class="form-group">
-						<label>이름.</label>
+						<label>이름.2</label>
 						<input type="text" value="<%=m.getMem_name() %>" name="userName" id="userName" class="form-control input-lg" placeholder="이름" tabindex="2" readonly>
 					</div>
 					<!-- 생년월일 -->
