@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import bike.model.vo.Bike;
@@ -82,4 +84,42 @@ public class BikeDAO {
 		System.out.println(bp);
 		return bp;
 	}
+
+//	자전거 전체 조회
+	public List<Bike> selectBikeList(Connection conn,int cPage,int numPerPage){
+		
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql=prop.getProperty("selectBikeList");
+		Bike b=null;
+		ArrayList<Bike> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, cPage);
+			pstmt.setInt(2, numPerPage);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				b=new Bike();
+				b.setBikeId(rs.getString("bike_id"));
+				b.setBikeStatus(rs.getString("bike_status"));
+				b.setBikeType(rs.getString("bike_type"));
+				b.setShopId(rs.getString("shop_id"));
+				
+				list.add(b);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		close(rs);
+		close(pstmt);
+		
+		return list;
+	}
+
+
+
 }

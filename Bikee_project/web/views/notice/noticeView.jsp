@@ -179,7 +179,7 @@
  }
  	
  function fn_updateNotice() {
-		alert("실행?");
+		
 		var frm = $('#noticeFrm');
 		var url = "<%= request.getContextPath() %>/notice/noticeUpdate";
 		frm.attr("action", url);

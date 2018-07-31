@@ -4,7 +4,9 @@ import static common.JDBCTemplate.close;
 import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.util.List;
 
+import admin.model.dao.AdminDAO;
 import bike.model.dao.BikeDAO;
 import bike.model.vo.Bike;
 import bike.model.vo.BikePrice;
@@ -29,6 +31,13 @@ public class BikeService {
 		close(conn);
 		
 		return bp;
+		
+	}
+	public List<Bike> selectBikeList(int cPage,int numPerPage){
+		Connection conn=getConnection();
+		List<Bike> list=new BikeDAO().selectBikeList(conn,cPage,numPerPage);
+		close(conn);
+		return list;
 		
 	}
 }
